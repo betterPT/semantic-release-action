@@ -5,8 +5,8 @@ RUN mkdir /action
 WORKDIR /action
 
 # install deps
-COPY ./package.json ./package-lock.json ./
-RUN npm ci --only=prod
+COPY ./package.json ./yarn.lock ./
+RUN yarn install --frozen-lockfile
 
 # copy in entrypoint after dependency installation
 COPY entrypoint.js .
